@@ -18,4 +18,18 @@ describe("Thermostat", function() {
     thermostat.decreaseTemperature();
     expect(thermostat.currentTemperature()).toEqual(19);
   });
+
+  it("reaches its lowest temperature at 10 degrees", function(){
+    for (var i = 0; i < 10; i++) {
+    thermostat.decreaseTemperature();
+  }
+    expect(thermostat.currentTemperature()).toEqual(10);
+  });
+
+  it("reaches its lowest temperature at 10 degrees", function(){
+    for (var i = 0; i < 11; i++) {
+    thermostat.decreaseTemperature();
+  }
+    expect(thermostat.currentTemperature()).toEqual(10);
+  });
 });
