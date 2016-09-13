@@ -32,4 +32,19 @@ describe("Thermostat", function() {
   }
     expect(thermostat.currentTemperature()).toEqual(10);
   });
+
+  it("reaches its highest temperature at 25 degrees", function (){
+    for (var i = 0; i < 6; i++) {
+    thermostat.increaseTemperature();
+  }
+    expect(thermostat.currentTemperature()).toEqual(25);
+  });
+
+  it("increases maximum temperature to 32 degrees when power saving mode is off", function () {
+    thermostat.powerSavingModeOff();
+    for (var i = 0; i < 7; i++) {
+    thermostat.increaseTemperature();
+  }
+    expect(thermostat.currentTemperature()).toEqual(27);
+  });
 });
