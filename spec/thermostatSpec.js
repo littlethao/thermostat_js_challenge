@@ -47,4 +47,28 @@ describe("Thermostat", function() {
   }
     expect(thermostat.currentTemperature()).toEqual(27);
   });
+
+  it("resets its temperature to 20 when pressing reset", function(){
+    thermostat.increaseTemperature();
+    thermostat.reset();
+    expect(thermostat.currentTemperature()).toEqual(20);
+  });
+
+  it("turns green when temperature is lower than 18", function(){
+    thermostat.decreaseTemperature();
+    thermostat.decreaseTemperature();
+    thermostat.decreaseTemperature();
+    expect(thermostat.currentColour()).toEqual("green");
+  });
+
+  it("turns yellow when temperature is lower than 25 and higher than 18", function(){
+    expect(thermostat.currentColour()).toEqual("yellow");
+  });
+
+  it("turns red when temperature is higher than 25", function(){
+    for (var i = 0; i < 7; i++) {
+    thermostat.increaseTemperature();
+  }
+    expect(thermostat.currentColour()).toEqual("red");
+  });
 });

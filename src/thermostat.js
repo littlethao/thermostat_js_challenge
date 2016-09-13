@@ -21,6 +21,26 @@ Thermostat.prototype = {
       return this.MINIMUM_TEMPERATURE;
     }
     this.temperature -= 1;
+  },
+
+  reset: function() {
+    this.temperature = 20;
+  },
+
+  powerSavingModeOff: function(){
+    this.MAXIMUM_TEMPERATURE += 7;
+  },
+
+  currentColour: function(){
+    if(this.temperature < 18){
+      return "green";
+    }
+    else if(this.temperature < 25){
+      return "yellow";
+    }
+    else{
+      return "red";
+    }
   }
 };
 
@@ -30,8 +50,4 @@ Thermostat.prototype.isMinimumTemperature = function(){
 
 Thermostat.prototype.isMaximumTemperature = function () {
   return this.temperature === this.MAXIMUM_TEMPERATURE;
-};
-
-Thermostat.prototype.powerSavingModeOff = function(){
-  this.MAXIMUM_TEMPERATURE += 7;
 };
