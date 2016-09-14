@@ -7,16 +7,21 @@ describe('Thermostat', function() { 'use strict';
   });
 
   it('starts with a default temperature of 20', function() {
-    expect(thermostat.currentTemperature()).toEqual(20);
+    expect(thermostat.showTemperature()).toEqual(20);
   });
 
   it('increases temperature', function() {
     thermostat.increaseTemperature();
-    expect(thermostat.currentTemperature()).toEqual(21);
+    expect(thermostat.showTemperature()).toEqual(21);
   });
 
   it('decreased temperature', function() {
     thermostat.decreaseTemperature();
-    expect(thermostat.currentTemperature()).toEqual(19);
+    expect(thermostat.showTemperature()).toEqual(19);
+  });
+
+  it('cannot go past minimum of 10', function() {
+    thermostat._temperature = 10;
+    expect(function() {thermostat.decreaseTemperature();}).toThrowError('Cannot go below minimum temperature.');
   });
 });

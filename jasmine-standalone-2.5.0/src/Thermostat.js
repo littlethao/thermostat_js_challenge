@@ -1,17 +1,22 @@
 DEFAULT_TEMPERATURE = 20;
+MIN_TEMPERATURE = 10;
 
-Thermostat = function() {
+Thermostat = function() {"use strict";
   this._temperature = DEFAULT_TEMPERATURE;
+  this._minimumTemperature = MIN_TEMPERATURE;
 };
 
 Thermostat.prototype = {
-  currentTemperature: function() {
+  showTemperature: function() {
     return this._temperature;
   },
   increaseTemperature: function() {
     this._temperature ++;
   },
   decreaseTemperature: function() {
-    this._temperature --;
-  },
+    if(this._temperature <= this._minimumTemperature){
+      throw new Error("Cannot go below minimum temperature.");
+    } else {
+        this._temperature --;
+  }},
 };
