@@ -17,4 +17,14 @@ $(document).ready(function() {
     $('#temperature').text(thermostat.showTemperature());
   }
 
+  $('#temperature-reset').click(function() {
+    thermostat.resetTemperature();
+    updateTemperature();
+  });
+
+  $('#powersaving-switch').click(function() {
+    thermostat.powerSaveSwitch();
+    $('#powersaving-status').text(thermostat._powerSaveMode);
+  });
+
 });

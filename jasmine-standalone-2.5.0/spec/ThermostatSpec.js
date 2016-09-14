@@ -43,7 +43,7 @@ describe('Thermostat', function() { 'use strict';
 
   it('can change powersave mode', function() {
     thermostat.powerSaveSwitch();
-    expect(thermostat._powerSaveMode).toEqual(false);
+    expect(thermostat._powerSaveMode).toEqual('off');
   });
 
   it('returns green when temp below 18', function() {

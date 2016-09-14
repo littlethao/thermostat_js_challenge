@@ -6,7 +6,7 @@ REGULAR_MAX = 32;
 Thermostat = function() {"use strict";
   this._temperature = DEFAULT_TEMPERATURE;
   this._minimumTemperature = MIN_TEMPERATURE;
-  this._powerSaveMode = true;
+  this._powerSaveMode = 'on';
   this._powerSaveMax = POWERSAVE_MAX;
   this._regularMax = REGULAR_MAX;
 };
@@ -31,12 +31,15 @@ Thermostat.prototype = {
     this._temperature = DEFAULT_TEMPERATURE;
   },
   powerSaveSwitch: function() {
-    this._powerSaveMode = !this._powerSaveMode;
-  }
-};
+    if (this._powerSaveMode === 'on') {
+      this._powerSaveMode = 'off';
+    } else {
+      this._powerSaveMode = 'on';
+    }
+}};
 
 Thermostat.prototype.powerSaveStatus = function() {
-  if (this._powerSaveMode === true) {
+  if (this._powerSaveMode === 'on') {
     return this._powerSaveMax;
   } else {
     return this._regularMax;
