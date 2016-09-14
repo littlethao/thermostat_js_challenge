@@ -48,19 +48,16 @@ describe('Thermostat', function() { 'use strict';
 
   it('returns green when temp below 18', function() {
     thermostat._temperature = 17;
-    thermostat.showTemperature();
-    expect(thermostat._colour).toEqual("green");
+    expect(thermostat.colourSwitch()).toEqual("green");
   });
 
   it('returns yellow when 18 < temp < 25', function() {
     thermostat._temperature = 20;
-    thermostat.showTemperature();
-    expect(thermostat._colour).toEqual("yellow");
+    expect(thermostat.colourSwitch()).toEqual("yellow");
   });
 
   it('returns red when temp > 25', function() {
     thermostat._temperature = 30;
-    thermostat.showTemperature();
-    expect(thermostat._colour).toEqual("red");
+    expect(thermostat.colourSwitch()).toEqual("red");
   });
 });
