@@ -45,4 +45,22 @@ describe('Thermostat', function() { 'use strict';
     thermostat.powerSaveSwitch();
     expect(thermostat._powerSaveMode).toEqual(false);
   });
+
+  it('returns green when temp below 18', function() {
+    thermostat._temperature = 17;
+    thermostat.showTemperature();
+    expect(thermostat._colour).toEqual("green");
+  });
+
+  it('returns yellow when 18 < temp < 25', function() {
+    thermostat._temperature = 20;
+    thermostat.showTemperature();
+    expect(thermostat._colour).toEqual("yellow");
+  });
+
+  it('returns red when temp > 25', function() {
+    thermostat._temperature = 30;
+    thermostat.showTemperature();
+    expect(thermostat._colour).toEqual("red");
+  });
 });

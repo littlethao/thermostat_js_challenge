@@ -9,10 +9,12 @@ Thermostat = function() {"use strict";
   this._powerSaveMode = true;
   this._powerSaveMax = POWERSAVE_MAX;
   this._regularMax = REGULAR_MAX;
+  this._colour = "yellow";
 };
 
 Thermostat.prototype = {
   showTemperature: function() {
+    this.colourSwitch();
     return this._temperature;
   },
   increaseTemperature: function() {
@@ -20,15 +22,18 @@ Thermostat.prototype = {
       throw new Error("Cannot go above max temperature.");
     }
     this._temperature ++;
+    this.showTemperature();
   },
   decreaseTemperature: function() {
     if(this._temperature <= this._minimumTemperature){
       throw new Error("Cannot go below minimum temperature.");
     }
     this._temperature --;
+    this.showTemperature();
   },
   resetTemperature: function() {
     this._temperature = DEFAULT_TEMPERATURE;
+    this.showTemperature();
   },
   powerSaveSwitch: function() {
     this._powerSaveMode = !this._powerSaveMode;
@@ -40,5 +45,15 @@ Thermostat.prototype.powerSaveStatus = function() {
     return this._powerSaveMax;
   } else {
     return this._regularMax;
+  }
+};
+
+Thermostat.prototype.colourSwitch = function() {
+  if (this._temperature < 18) {
+    this._colour = "green";
+  } else if (this._temperature < 25){
+    this._colour = "yellow";
+  } else {
+    this._colour = "red";
   }
 };
