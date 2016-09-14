@@ -1,11 +1,20 @@
 $(document).ready(function() {
 
   var thermostat = new Thermostat();
-  $('#temperature').text(thermostat.showTemperature());
+  updateTemperature();
 
   $('#temperature-up').click(function() {
     thermostat.increaseTemperature();
-    $('#temperature').text(thermostat.showTemperature());
+    updateTemperature();
   });
+
+  $('#temperature-down').click(function() {
+    thermostat.decreaseTemperature();
+    updateTemperature();
+  });
+
+  function updateTemperature() {
+    $('#temperature').text(thermostat.showTemperature());
+  }
 
 });
