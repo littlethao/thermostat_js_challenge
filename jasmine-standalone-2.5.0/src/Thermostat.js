@@ -27,6 +27,12 @@ Thermostat.prototype = {
     }
     this._temperature --;
   },
+  resetTemperature: function() {
+    this._temperature = DEFAULT_TEMPERATURE;
+  },
+  powerSaveSwitch: function() {
+    this._powerSaveMode = !this._powerSaveMode;
+  }
 };
 
 Thermostat.prototype.powerSaveStatus = function() {

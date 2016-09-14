@@ -35,4 +35,14 @@ describe('Thermostat', function() { 'use strict';
     thermostat._temperature = 32;
     expect(function() {thermostat.increaseTemperature();}).toThrowError('Cannot go above max temperature.');
   });
+
+  it('can be reset to default temperature', function() {
+    thermostat.resetTemperature();
+    expect(thermostat.showTemperature()).toEqual(20);
+  });
+
+  it('can change powersave mode', function() {
+    thermostat.powerSaveSwitch();
+    expect(thermostat._powerSaveMode).toEqual(false);
+  });
 });
