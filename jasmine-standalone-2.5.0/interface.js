@@ -13,11 +13,6 @@ $(document).ready(function() {
     updateTemperature();
   });
 
-  function updateTemperature() {
-    $('#temperature').text(thermostat.showTemperature());
-    $('#temperature').attr('class', thermostat.colourSwitch());
-  }
-
   $('#temperature-reset').click(function() {
     thermostat.resetTemperature();
     updateTemperature();
@@ -27,5 +22,10 @@ $(document).ready(function() {
     thermostat.powerSaveSwitch();
     $('#powersaving-status').text(thermostat._powerSaveMode);
   });
+
+  function updateTemperature() {
+    $('#temperature').text(thermostat.showTemperature());
+    $('#temperature').attr('class', thermostat.colourSwitch());
+  }
 
 });
