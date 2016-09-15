@@ -17,13 +17,16 @@ Thermostat.prototype = {
   },
 
   decreaseTemperature: function() {
-    if(this.temperature < this._MINIMUM) {
+    if(this.temperature <= this._MINIMUM) {
       throw new Error('cannot decrease further');
     }
     this.temperature -= 1;
   },
 
   powerSaveOn: function() {
+    if (this.temperature >25) {
+      this.temperature = 25;
+    }
     this._MAX = 25;
   },
 
