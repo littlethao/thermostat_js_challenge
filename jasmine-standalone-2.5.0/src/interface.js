@@ -1,5 +1,14 @@
 
 $( document ).ready(function() {
+    $("#cities").change(function() {
+      var city = this.value;
+  $.get("http://api.wunderground.com/api/924e689f3b4a4775/geolookup/conditions/q/" + city + ".json", function(parsed_json) {
+    var location = parsed_json['location']['city'];
+    var temp_c = parsed_json['current_observation']['temp_c'];
+    $('#location').text("Current temperature in " + location + " is: " + temp_c);
+    });
+  });
+
   var thermostat = new Thermostat();
   checkTemperature();
 
@@ -31,10 +40,7 @@ $( document ).ready(function() {
   });
 
   function checkTemperature() {
-$('#temperature').text(thermostat.temperature);
-$('#temperature').attr('class', thermostat.energyChecker());
-}
-
-
-
+    $('#temperature').text(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.energyChecker());
+  }
 });
