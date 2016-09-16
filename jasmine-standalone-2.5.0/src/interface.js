@@ -32,52 +32,9 @@ $( document ).ready(function() {
 
   function checkTemperature() {
 $('#temperature').text(thermostat.temperature);
-$('#temperature').attr('green', thermostat.energyChecker());
+$('#temperature').attr('class', thermostat.energyChecker());
 }
-    // function checkTemperature() {
-    //   $('#temperature').text(thermostat.temperature);
-    // }
 
-//     function checkTemperature() {
-//   $('#temperature').text(thermostat.temperature);
-//   if(thermostat.energyChecker() === 'green') {
-//     $('#temperature').css('color', 'green')
-//   } else if(thermostat.energyChecker() === 'yellow') {
-//     $('#temperature').css('color', 'yellow')
-//   } else {
-//     $('#temperature').css('color', 'red')
-//   }
-// }
 
 
 });
-
-//   // document.getElementById("increasetemp").innerHTML = thermostat.increaseTemperature;
-//
-//   // $( "button" ).addClass( "test" );
-//
-//   $( "#increasetemp" ).click(function( event ) {
-//
-//     event.preventDefault();
-//
-//     $( this ).hide( "slow" );
-//
-//
-// });
-//
-// $( "#decreasetemp" ).click(function( event ) {
-//
-//   event.preventDefault();
-//
-//   $( this ).hide( "slow" );
-//
-//
-// });
-//
-// });
-//
-// // window.onload = function() {
-// //
-// //     alert( "welcome" );
-// //
-// // };
